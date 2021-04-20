@@ -1,18 +1,14 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using RoR2;
-using System.IO;
-using System.Reflection;
 using System.Security;
 using System.Security.Permissions;
-using UnityEngine;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
 namespace Fresh_Bison_Steak
 {
-    [BepInPlugin("com.OkIGotIt.Fresh_Bison_Steak", "Fresh_Bison_Steak", "1.0.1")]
+    [BepInPlugin("com.OkIGotIt.Fresh_Bison_Steak", "Fresh_Bison_Steak", "1.0.2")]
     public class Fresh_Bison_Steak : BaseUnityPlugin
     {
         public void Awake()
@@ -25,7 +21,7 @@ namespace Fresh_Bison_Steak
             orig(self, damageReport);
             if (!damageReport.attacker || !damageReport.attackerBody)
                 return;
-            CharacterBody body = PlayerCharacterMasterController.instances[0].master.GetBody();
+            CharacterBody body = LocalUserManager.GetFirstLocalUser().cachedMasterController.master.GetBody();
             CharacterBody attacker = damageReport.attackerBody;
             if (body != attacker)
                 return;
