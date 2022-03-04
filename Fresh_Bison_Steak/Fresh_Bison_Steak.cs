@@ -8,7 +8,7 @@ using System.Security.Permissions;
 
 namespace Fresh_Bison_Steak
 {
-    [BepInPlugin("com.OkIGotIt.Fresh_Bison_Steak", "Fresh_Bison_Steak", "1.0.3")]
+    [BepInPlugin("com.OkIGotIt.Fresh_Bison_Steak", "Fresh_Bison_Steak", "1.0.4")]
     public class Fresh_Bison_Steak : BaseUnityPlugin
     {
         public void Awake()
@@ -22,7 +22,7 @@ namespace Fresh_Bison_Steak
                 return;
             int itemCount = report.attackerBody.inventory.GetItemCount(ItemCatalog.FindItemIndex("FlatHealth"));
             if (itemCount > 0)
-                report.attackerBody.AddTimedBuff(RoR2Content.Buffs.MeatRegenBoost, 3f * (float)itemCount);
+                report.attackerBody.AddTimedBuff(JunkContent.Buffs.MeatRegenBoost, 3f * (float)itemCount);
         }
     }
 }
